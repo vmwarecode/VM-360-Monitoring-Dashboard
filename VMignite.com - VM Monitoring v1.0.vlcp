@@ -38,7 +38,7 @@
       "rows":[ {
         "widgets":[ {
           "name":"VMs Created",
-          "info":"<span><span style=\"font-weight: bold;\">IMPORTANT:</span><span>&nbsp;This widget requires&nbsp;</span><a href=\"https://192.168.100.165/admin/vsphere\">vSphere integration</a><span>&nbsp;and more specifically the collection of vCenter Server events, task, and alarms to display any results.</span><br><br>The number of VMs that have been created as recorded by vCenter Server. You can add a group by for the vc_vm_name to determine which VM names have been created or a group by for vc_username to see which user(s) has created at least one VM.</span><br>",
+          "info":"<span><span style=\"font-weight: bold;\">IMPORTANT:</span><span> This widget requires </span><a href=\"https://192.168.100.165/admin/vsphere\">vSphere integration</a><span> and more specifically the collection of vCenter Server events, task, and alarms to display any results.</span><br><br>The number of VMs that have been created as recorded by vCenter Server. You can add a group by for the vc_vm_name to determine which VM names have been created or a group by for vc_username to see which user(s) has created at least one VM.</span><br>",
           "chartType":null,
           "chartOptions":"{}",
           "widgetType":"chart",
@@ -46,7 +46,7 @@
           "messageQuery":""
         }, {
           "name":"VMs Deleted",
-          "info":"<span style=\"font-weight: bold;\">IMPORTANT:</span><span>&nbsp;This widget requires&nbsp;</span><a href=\"https://192.168.100.165/admin/vsphere\">vSphere integration</a><br><span>&nbsp;and more specifically the collection of vCenter Server events, task, and alarms to display any results.</span><br>The number of VMs that have been deleted as recorded by vCenter Server. You can add a group by for the vc_vm_name to determine which VMs have been deleted or a group by for vc_username to see which user(s) has deleted at least one VM.<br>",
+          "info":"<span style=\"font-weight: bold;\">IMPORTANT:</span><span> This widget requires </span><a href=\"https://192.168.100.165/admin/vsphere\">vSphere integration</a><br><span> and more specifically the collection of vCenter Server events, task, and alarms to display any results.</span><br>The number of VMs that have been deleted as recorded by vCenter Server. You can add a group by for the vc_vm_name to determine which VMs have been deleted or a group by for vc_username to see which user(s) has deleted at least one VM.<br>",
           "chartType":null,
           "chartOptions":"{}",
           "widgetType":"chart",
@@ -242,7 +242,7 @@
           "messageQuery":""
         }, {
           "name":"Disk consolidation needed",
-          "info":"<span>When initiating&nbsp;</span><span>Delete</span><span>&nbsp;or&nbsp;</span><span>DeleteAll</span><span>&nbsp;operations on snapshots, the snapshot details are deleted from Snapshot Manager, then the snapshot files are consolidated and merged to another snapshot file or to the virtual machine parent disk. If the consolidation fails, then no snapshots shown in the Snapshot Manager, but the snapshot files were still being used on the datastore. This can cause an unmonitored datastore to run out of space.<br></span><br><span>For more information, please see:</span><br><br><span>•&nbsp;</span><span><a href=\"http://kb.vmware.com/kb/2003638\">Consolidating snapshots in vSphere 5.x</a><br>•&nbsp;</span><a href=\"http://pubs.vmware.com/vsphere-55/topic/com.vmware.vsphere.vm_admin.doc/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html\">Using Snapshots To Manage Virtual Machines</a>",
+          "info":"<span>When initiating </span><span>Delete</span><span> or </span><span>DeleteAll</span><span> operations on snapshots, the snapshot details are deleted from Snapshot Manager, then the snapshot files are consolidated and merged to another snapshot file or to the virtual machine parent disk. If the consolidation fails, then no snapshots shown in the Snapshot Manager, but the snapshot files were still being used on the datastore. This can cause an unmonitored datastore to run out of space.<br></span><br><span>For more information, please see:</span><br><br><span>• </span><span><a href=\"http://kb.vmware.com/kb/2003638\">Consolidating snapshots in vSphere 5.x</a><br>• </span><a href=\"http://pubs.vmware.com/vsphere-55/topic/com.vmware.vsphere.vm_admin.doc/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html\">Using Snapshots To Manage Virtual Machines</a>",
           "chartType":"number",
           "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
           "widgetType":"chart",
@@ -441,7 +441,7 @@
       }, {
         "widgets":[ {
           "name":"Remote console events ",
-          "info":"IMPORTANT:&nbsp;This widget requires&nbsp;<a href=\"/admin/vsphere\">vSphere integration</a>&nbsp;and more specifically the collection of vCenter Server events, task, and alarms to display any results.",
+          "info":"IMPORTANT: This widget requires <a href=\"/admin/vsphere\">vSphere integration</a> and more specifically the collection of vCenter Server events, task, and alarms to display any results.",
           "chartType":"bubble",
           "chartOptions":"{\"logaxis\":false,\"doublegroupbymultiseries\":true,\"legend\":true,\"swapfields\":false,\"doublegroupbystacking\":\"none\",\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
           "widgetType":"chart",
