@@ -1,0 +1,899 @@
+{
+  "name":"VMignite.com - VM Monitoring",
+  "namespace":"vmignite.com",
+  "contentPackId":"vmignite.com",
+  "framework":"#9c4",
+  "version":"2.4",
+  "extractedFields":[ {
+    "displayName":"vmw_esxi_drs_vm",
+    "preContext":"migrating (vim.VirtualMachine:)?",
+    "postContext":" from",
+    "regexValue":".*?",
+    "internalName":"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl5sxg6djl5she427ozwq0000",
+    "constraints":"{\"searchTerms\":\"\",\"filters\":[{\"hidden\":false,\"internalName\":\"vc_event_type\",\"displayName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"com.vmware.vc.vm.vmhotmigratingwithencryptionevent\",\"fieldType\":\"STRING\",\"isExtracted\":false}]}",
+    "info":null
+  }, {
+    "displayName":"vmw_vc_mks_host",
+    "preContext":"A ticket for ",
+    "postContext":" of type MKS",
+    "regexValue":".*",
+    "internalName":"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3nnnzv62dpon2a0000",
+    "constraints":"{\"searchTerms\":\"\",\"filters\":[{\"internalName\":\"appname\",\"displayName\":\"appname\",\"operator\":\"CONTAINS\",\"value\":\"vcenter-server\",\"fieldType\":\"NUMBER\",\"isExtracted\":false,\"hidden\":false}]}",
+    "info":null
+  }, {
+    "displayName":"vmw_vc_task_type",
+    "preContext":"task: ",
+    "postContext":"$",
+    "regexValue":".*",
+    "internalName":"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000",
+    "constraints":"{\"filters\":[{\"internalName\":\"appname\",\"displayName\":\"appname\",\"operator\":\"CONTAINS\",\"value\":\"vcenter-server\",\"fieldType\":\"NUMBER\",\"isExtracted\":false,\"hidden\":false}]}",
+    "info":null
+  } ],
+  "queries":[ ],
+  "alerts":[ ],
+  "dashboardSections":[ {
+    "views":[ {
+      "name":"VMignite.com - VM Activity",
+      "constraints":[ ],
+      "rows":[ {
+        "widgets":[ {
+          "name":"VMs Created",
+          "info":"<span><span style=\"font-weight: bold;\">IMPORTANT:</span><span>&nbsp;This widget requires&nbsp;</span><a href=\"https://192.168.100.165/admin/vsphere\">vSphere integration</a><span>&nbsp;and more specifically the collection of vCenter Server events, task, and alarms to display any results.</span><br><br>The number of VMs that have been created as recorded by vCenter Server. You can add a group by for the vc_vm_name to determine which VM names have been created or a group by for vc_username to see which user(s) has created at least one VM.</span><br>",
+          "chartType":null,
+          "chartOptions":"{}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1478146865283,\"endTimeMillis\":1478233265419,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"FIELD_TABLE\",\"constraintToggle\":\"ANY\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"MATCH\",\"value\":\"create virtual machine$\"},{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"clone virtual machine,virtualmachine.clone\"},{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"com.vmware.vim25.VmCreatedEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        }, {
+          "name":"VMs Deleted",
+          "info":"<span style=\"font-weight: bold;\">IMPORTANT:</span><span>&nbsp;This widget requires&nbsp;</span><a href=\"https://192.168.100.165/admin/vsphere\">vSphere integration</a><br><span>&nbsp;and more specifically the collection of vCenter Server events, task, and alarms to display any results.</span><br>The number of VMs that have been deleted as recorded by vCenter Server. You can add a group by for the vc_vm_name to determine which VMs have been deleted or a group by for vc_username to see which user(s) has deleted at least one VM.<br>",
+          "chartType":null,
+          "chartOptions":"{}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1478624687769,\"endTimeMillis\":1478711087768,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"FIELD_TABLE\",\"constraintToggle\":\"ANY\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"com.vmware.vim25.VmRemovedEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":""
+        }, {
+          "name":"VM Snapshots",
+          "info":"",
+          "chartType":null,
+          "chartOptions":"{}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1475061662908,\"endTimeMillis\":1478946660740,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"FIELD_TABLE\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[],\"supplementalConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"create virtual machine snapshot,virtualmachine.createsnapshot\"}],\"groupByFields\":[],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        }, {
+          "name":"Reconfigured VM",
+          "info":"",
+          "chartType":null,
+          "chartOptions":"{}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1475061662908,\"endTimeMillis\":1478946660740,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"FIELD_TABLE\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"reconfigure virtual machine,virtualmachine.reconfigure\"}],\"groupByFields\":[],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"VMs Created Details",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1478146865283,\"endTimeMillis\":1478233265419,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"FIELD_TABLE\",\"constraintToggle\":\"ANY\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"MATCH\",\"value\":\"create virtual machine$\"},{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"clone virtual machine,virtualmachine.clone\"},{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"com.vmware.vim25.VmCreatedEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"VMs Deleted Details",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1478624687769,\"endTimeMillis\":1478711087768,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":true,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"FIELD_TABLE\",\"constraintToggle\":\"ANY\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"com.vmware.vim25.VmRemovedEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"VM Snapshots Details",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1475061662908,\"endTimeMillis\":1478946660740,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"FIELD_TABLE\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[],\"supplementalConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"create virtual machine snapshot,virtualmachine.createsnapshot\"}],\"groupByFields\":[],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"VMs Reconfigured Details",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1622928104299,\"endTimeMillis\":1622931704298,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"VMs Created by Username",
+          "info":"",
+          "chartType":"bar",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1478548518378,\"endTimeMillis\":1478634918377,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ANY\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"MATCH\",\"value\":\"create virtual machine$\"},{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"clone virtual machine,virtualmachine.clone\"},{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"com.vmware.vim25.VmCreatedEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        }, {
+          "name":"VMs Deleted by Username",
+          "info":"",
+          "chartType":"bar",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1478624687769,\"endTimeMillis\":1478711087768,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"FIELD_TABLE\",\"constraintToggle\":\"ANY\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"com.vmware.vim25.VmRemovedEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":""
+        }, {
+          "name":"VM Snapshot by Username",
+          "info":"",
+          "chartType":"bar",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1475061662908,\"endTimeMillis\":1478946660740,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"FIELD_TABLE\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[],\"supplementalConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"create virtual machine snapshot,virtualmachine.createsnapshot\"}],\"groupByFields\":[{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        }, {
+          "name":"Reconfigure VM by Username",
+          "info":"",
+          "chartType":"bar",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1475061662908,\"endTimeMillis\":1478946660740,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"FIELD_TABLE\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"reconfigure virtual machine,virtualmachine.reconfigure\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"VMs Powered On",
+          "info":"",
+          "chartType":"number",
+          "chartOptions":"{\"logaxis\":true,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1622479990368,\"endTimeMillis\":1622483590367,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"EXISTS\"},{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"EXISTS\"},{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"DOES_NOT_CONTAIN\",\"value\":\"recompute virtual disk digest,check new notifications,download patch definitions\"}],\"supplementalConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"power on virtual machine\"}],\"groupByFields\":[{\"displayName\":\"vmw_vc_task_type\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"displayNamespace\":\"WAVE Log Insight Dashboards\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        }, {
+          "name":"VMs Powered Off/Restarted",
+          "info":"",
+          "chartType":"number",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1622453359885,\"endTimeMillis\":1622456959884,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"initiate guest os shutdown,Initiate guest OS reboot,Reset virtual machine,Power Off virtual machine\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_vc_task_type\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"displayNamespace\":\"WAVE Log Insight Dashboards\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vmw_vcenter\",\"internalName\":\"vmw_vcenter\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"VMs Renamed",
+          "info":"",
+          "chartType":"number",
+          "chartOptions":"{\"logaxis\":true,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1622464358099,\"endTimeMillis\":1622464658098,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"EXISTS\"},{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"EXISTS\"},{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"DOES_NOT_CONTAIN\",\"value\":\"recompute virtual disk digest,check new notifications,download patch definitions\"},{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"rename virtual machine\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_vc_task_type\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"displayNamespace\":\"WAVE Log Insight Dashboards\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vmw_vcenter\",\"internalName\":\"vmw_vcenter\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        }, {
+          "name":"Disk consolidation needed",
+          "info":"<span>When initiating&nbsp;</span><span>Delete</span><span>&nbsp;or&nbsp;</span><span>DeleteAll</span><span>&nbsp;operations on snapshots, the snapshot details are deleted from Snapshot Manager, then the snapshot files are consolidated and merged to another snapshot file or to the virtual machine parent disk. If the consolidation fails, then no snapshots shown in the Snapshot Manager, but the snapshot files were still being used on the datastore. This can cause an unmonitored datastore to run out of space.<br></span><br><span>For more information, please see:</span><br><br><span>•&nbsp;</span><span><a href=\"http://kb.vmware.com/kb/2003638\">Consolidating snapshots in vSphere 5.x</a><br>•&nbsp;</span><a href=\"http://pubs.vmware.com/vsphere-55/topic/com.vmware.vsphere.vm_admin.doc/GUID-CA948C69-7F58-4519-AEB1-739545EA94E5.html\">Using Snapshots To Manage Virtual Machines</a>",
+          "chartType":"number",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"consolidation\",\"startTimeMillis\":1502282782001,\"endTimeMillis\":1506372089057,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"com.vmware.vc.VmDiskConsolidationNeeded\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":""
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"VMs Relocated (vMotioned)",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1620775248770,\"endTimeMillis\":1629732703252,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":true,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"com.vmware.vim25.VmBeingRelocatedEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"VMware DRS executed vMotions by VM",
+          "info":"vMotions may be executed by DRS to address cluster imbalance.",
+          "chartType":"number",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1544523389521,\"endTimeMillis\":1544526258975,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl5sxg6djl5she427ozwq0000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_esxi_drs_vm\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl5sxg6djl5she427ozwq0000\",\"displayNamespace\":\"WAVE Log Insight Dashboards\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_esxi_drs_vm\",\"preContext\":\"migrating (vim.VirtualMachine:)?\",\"postContext\":\" from\",\"regexValue\":\".*?\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl5sxg6djl5she427ozwq0000\",\"constraints\":\"{\\\"searchTerms\\\":\\\"\\\",\\\"filters\\\":[{\\\"hidden\\\":false,\\\"internalName\\\":\\\"vc_event_type\\\",\\\"displayName\\\":\\\"vc_event_type\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"com.vmware.vc.vm.vmhotmigratingwithencryptionevent\\\",\\\"fieldType\\\":\\\"STRING\\\",\\\"isExtracted\\\":false}]}\"}]}",
+          "messageQuery":""
+        }, {
+          "name":"VM HA Failover Event",
+          "info":"",
+          "chartType":"number",
+          "chartOptions":"{\"logaxis\":false,\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1594506646942,\"endTimeMillis\":1594765847498,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"text\",\"operator\":\"CONTAINS\",\"value\":\"VMware Tools heartbeat failure\"},{\"internalName\":\"vc_event_type\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vmw_vcenter\",\"internalName\":\"vmw_vcenter\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"source\",\"internalName\":\"__li_source_path\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":""
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"Configured - VM CPU",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"config.hardware.numCPU\",\"startTimeMillis\":1622386815588,\"endTimeMillis\":1622473215587,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"ibadcoc7mnxw2ltwnv3wc4tffz3hg4dimvzgk5tno5pxmy27ojswg33omzuwox3pny000000",
+            "displayName":"vmw_vc_reconfig_on",
+            "displayNamespace":"VMware - vSphere"
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"Configured - VM Memory",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"config.hardware.memoryMB\",\"startTimeMillis\":1622386662835,\"endTimeMillis\":1622473062834,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"ibadcoc7mnxw2ltwnv3wc4tffz3hg4dimvzgk5tno5pxmy27ojswg33omzuwox3pny000000",
+            "displayName":"vmw_vc_reconfig_on",
+            "displayNamespace":"VMware - vSphere"
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"Configured - VM Hard Disk",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1620775248770,\"endTimeMillis\":1629733459003,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"},{\"internalName\":\"text\",\"operator\":\"CONTAINS\",\"value\":\"config.hardware.device\"},{\"internalName\":\"text\",\"operator\":\"DOES_NOT_CONTAIN\",\"value\":\"VM Network,Remote device\"},{\"internalName\":\"text\",\"operator\":\"CONTAINS\",\"value\":\"deviceInfo.summary\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"ibadcoc7mnxw2ltwnv3wc4tffz3hg4dimvzgk5tno5pxmy27ojswg33omzuwox3pny000000",
+            "displayName":"vmw_vc_reconfig_on",
+            "displayNamespace":"VMware - vSphere"
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"Configured - VM Network",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1622451968735,\"endTimeMillis\":1622473568734,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"},{\"internalName\":\"text\",\"operator\":\"CONTAINS\",\"value\":\"config.hardware.device\"},{\"internalName\":\"text\",\"operator\":\"CONTAINS\",\"value\":\"Network adapter\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"ibadcoc7mnxw2ltwnv3wc4tffz3hg4dimvzgk5tno5pxmy27ojswg33omzuwox3pny000000",
+            "displayName":"vmw_vc_reconfig_on",
+            "displayNamespace":"VMware - vSphere"
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          } ]
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"Remote console events ",
+          "info":"IMPORTANT:&nbsp;This widget requires&nbsp;<a href=\"/admin/vsphere\">vSphere integration</a>&nbsp;and more specifically the collection of vCenter Server events, task, and alarms to display any results.",
+          "chartType":"bubble",
+          "chartOptions":"{\"logaxis\":false,\"doublegroupbymultiseries\":true,\"legend\":true,\"swapfields\":false,\"doublegroupbystacking\":\"none\",\"pielabelstyle\":\"legend\",\"piepercentage\":false,\"piestyle\":\"normal\"}",
+          "widgetType":"chart",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1496915431684,\"endTimeMillis\":1502250226244,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3nnnzv62dpon2a0000\",\"operator\":\"EXISTS\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_vc_mks_host\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3nnnzv62dpon2a0000\",\"displayNamespace\":\"WAVE Log Insight Dashboards\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_mks_host\",\"preContext\":\"A ticket for \",\"postContext\":\" of type MKS\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3nnnzv62dpon2a0000\",\"constraints\":\"{\\\"searchTerms\\\":\\\"\\\",\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":""
+        }, {
+          "name":"Customize VM Guest OS",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1622659289775,\"endTimeMillis\":1622662889774,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[],\"supplementalConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"customize virtual machine guest os\"}],\"groupByFields\":[{\"displayName\":\"vmw_vc_task_type\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"displayNamespace\":\"WAVE Log Insight Dashboards\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"VM converted to Template",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1624697542473,\"endTimeMillis\":1624701270641,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"EXISTS\"},{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"EXISTS\"},{\"internalName\":\"text\",\"operator\":\"CONTAINS\",\"value\":\"Mark virtual machine as template\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vmw_vc_task_type\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"displayNamespace\":\"WAVE Log Insight Dashboards\",\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"VM Moved to Folders",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1629728832205,\"endTimeMillis\":1629729163684,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":true,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"move entities\"}],\"supplementalConstraints\":[],\"groupByFields\":[],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"VM Exported",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1629725162875,\"endTimeMillis\":1629728861828,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":true,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"export ovf template\"}],\"supplementalConstraints\":[],\"groupByFields\":[],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"VM Configuration Parameters Modified",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"config.extraConfig\",\"startTimeMillis\":1629728025019,\"endTimeMillis\":1629731653049,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"VM ISO Mounted",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1620775248770,\"endTimeMillis\":1629733908163,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"},{\"internalName\":\"text\",\"operator\":\"CONTAINS\",\"value\":\"config.hardware.device\"},{\"internalName\":\"text\",\"operator\":\"CONTAINS\",\"value\":\"Remote device\"},{\"internalName\":\"text\",\"operator\":\"CONTAINS\",\"value\":\"deviceInfo.summary\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"ibadcoc7mnxw2ltwnv3wc4tffz3hg4dimvzgk5tno5pxmy27ojswg33omzuwox3pny000000",
+            "displayName":"vmw_vc_reconfig_on",
+            "displayNamespace":"VMware - vSphere"
+          }, {
+            "internalName":"ibadax3wnv3v6zltpbuv65tnmzzv65tpnr2w2zjafazcs000",
+            "displayName":"vmw_esxi_vmfs_volume (2)",
+            "displayNamespace":null
+          }, {
+            "internalName":"ibadcoc7mnxw2ltwnv3wc4tffz3hg4dimvzgk5tno5pwk43ynfpxm3lgonpxm33movwwk000",
+            "displayName":"vmw_esxi_vmfs_volume",
+            "displayNamespace":"VMware - vSphere"
+          }, {
+            "internalName":"ibadax3wnv3v6zltpbuv65tnmzzv65tpnr2w2zi0",
+            "displayName":"vmw_esxi_vmfs_volume",
+            "displayNamespace":null
+          }, {
+            "internalName":"ibadcoc7mnxw2ltwnv3wc4tffz3hg4dimvzgk5tno5pwk43ynfpxm3k7nzqw2zi0",
+            "displayName":"vmw_esxi_vm_name",
+            "displayNamespace":"VMware - vSphere"
+          }, {
+            "internalName":"ibadax3wnv3v6zltpbuv65tnl5xgc3lf",
+            "displayName":"vmw_esxi_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"VM Version Upgraded",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"\",\"startTimeMillis\":1629728288565,\"endTimeMillis\":1629731964001,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ANY\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"operator\":\"CONTAINS\",\"value\":\"Upgrade VM compatibility\"}],\"supplementalConstraints\":[],\"groupByFields\":[],\"contentPacksToIncludeFields\":[],\"extractedFields\":[{\"displayName\":\"vmw_vc_task_type\",\"preContext\":\"task: \",\"postContext\":\"$\",\"regexValue\":\".*\",\"internalName\":\"ibadcms7ozwwsz3onf2gkltdn5wxm3lxl53ggx3umfzwwx3upfygk000\",\"constraints\":\"{\\\"filters\\\":[{\\\"internalName\\\":\\\"appname\\\",\\\"displayName\\\":\\\"appname\\\",\\\"operator\\\":\\\"CONTAINS\\\",\\\"value\\\":\\\"vcenter-server\\\",\\\"fieldType\\\":\\\"NUMBER\\\",\\\"isExtracted\\\":false,\\\"hidden\\\":false}]}\"}]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          } ]
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"VM CPU Limit Modified",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"config.cpuAllocation.limit\",\"startTimeMillis\":1629726090319,\"endTimeMillis\":1629729809450,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"VM Memory Limit Modified",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"config.memoryAllocation.limit\",\"startTimeMillis\":1629727314690,\"endTimeMillis\":1629730984122,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"FIELD_TABLE\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"VM CPU Reservation Modified",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"config.cpuAllocation.reservation\",\"startTimeMillis\":1629727314690,\"endTimeMillis\":1629731038137,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"VM Memory Reservation Modified",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"config.memoryAllocation.reservation\",\"startTimeMillis\":1629727314690,\"endTimeMillis\":1629731000379,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        } ]
+      }, {
+        "widgets":[ {
+          "name":"VM CPU Hot Add Modified",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"config.cpuHotAddEnabled\",\"startTimeMillis\":1629727511892,\"endTimeMillis\":1629731211161,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        }, {
+          "name":"VM Memory Hot Add Modified",
+          "info":"",
+          "chartType":null,
+          "chartOptions":null,
+          "widgetType":"fieldTable",
+          "chartQuery":"{\"query\":\"Modified: config.memoryHotAddEnabled\",\"startTimeMillis\":1620775248770,\"endTimeMillis\":1629730176814,\"piqlFunctionGroups\":[{\"functions\":[{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false}],\"field\":null}],\"dateFilterPreset\":\"CUSTOM\",\"shouldGroupByTime\":false,\"includeAllContentPackFields\":true,\"eventSortOrder\":\"DESC\",\"summarySortOrder\":\"DESC\",\"compareQueryOrderBy\":\"TREND\",\"compareQuerySortOrder\":\"DESC\",\"compareQueryOptions\":null,\"messageViewType\":\"EVENTS\",\"constraintToggle\":\"ALL\",\"piqlFunction\":{\"label\":\"Count\",\"value\":\"COUNT\",\"requiresField\":false,\"numericOnly\":false},\"piqlFunctionField\":null,\"fieldConstraints\":[{\"internalName\":\"vc_event_type\",\"operator\":\"CONTAINS\",\"value\":\"VmReconfiguredEvent\"}],\"supplementalConstraints\":[],\"groupByFields\":[{\"displayName\":\"vc_vm_name\",\"internalName\":\"vc_vm_name\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null},{\"displayName\":\"vc_username\",\"internalName\":\"vc_username\",\"displayNamespace\":null,\"numericGroupByType\":\"EACH_VALUE\",\"numericGroupByValue\":null}],\"contentPacksToIncludeFields\":[],\"extractedFields\":[]}",
+          "messageQuery":"",
+          "columns":[ {
+            "internalName":"__li_timestamp_col",
+            "displayName":"__li_timestamp_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_msg_col",
+            "displayName":"__li_msg_col",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_vm_name",
+            "displayName":"vc_vm_name",
+            "displayNamespace":null
+          }, {
+            "internalName":"vc_username",
+            "displayName":"vc_username",
+            "displayNamespace":null
+          }, {
+            "internalName":"__li_source_path",
+            "displayName":"source",
+            "displayNamespace":null
+          }, {
+            "internalName":"hostname",
+            "displayName":"hostname",
+            "displayNamespace":null
+          } ]
+        } ]
+      } ]
+    } ],
+    "header":""
+  } ],
+  "aliasFields":[ ],
+  "aliasRules":[ ],
+  "author":"Lan Nguyen",
+  "url":"http://www.vmignite.com",
+  "contentVersion":"1.0"
+}
